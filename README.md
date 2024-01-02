@@ -17,7 +17,7 @@ Fim: 01:30 - 31/12/2023
     -> Inclui informações sobre quantos sorvetes foram vendidos por sabor no dia. 
     
 ## Observações Importantes
--> Os relacionamentos devem ser feitos entre as classes, mantendo a orientação a objetos.
--> É necessário implementar CRUD para as entidades Sabor e TipoSorvete.
--> O projeto deve utilizar a implementação Restful do Spring para o desenvolvimento e os dados devem ser armazenados em banco de dados.
--> A quantidade de sabores registrados não pode ultrapassar a quantidade estipulada no registro de TipoSorvete.
+    -> Os relacionamentos devem ser feitos entre as classes, mantendo a orientação a objetos.
+    -> É necessário implementar CRUD para as entidades Sabor e TipoSorvete.
+    -> O projeto deve utilizar a implementação Restful do Spring para o desenvolvimento e os dados devem ser armazenados em banco de dados.
+    -> A quantidade de sabores registrados não pode ultrapassar a quantidade estipulada no registro de TipoSorvete.
