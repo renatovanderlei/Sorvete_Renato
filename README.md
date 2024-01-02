@@ -1,8 +1,9 @@
 # Sorvete
 Projeto com intuito de validação de sabores e tipo de sorvete, feito em Angular e Java utilizando spring boot como framework
 
-Inicio : 21:30 - 30/12/2023
-Fim: 01:30 - 31/12/2023
+## Horas trabalhadas
+    -> Inicio : 21:30 - 30/12/2023
+    -> Fim: 01:30 - 31/12/2023
 
 ## Registro de Sabor:
     -> Permite cadastrar/editar/atualizar/deletar novos sabores de sorvete.  
