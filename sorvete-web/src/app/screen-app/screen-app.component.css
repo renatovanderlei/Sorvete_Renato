@@ -1,0 +1,52 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to bottom, #4CAF50, #2196F3); /* Use as cores desejadas para o degradê */
+}
+
+.button-container {
+    text-align: center;
+    color: #fff; /* Cor do texto (branco, para contrastar com o fundo) */
+}
+
+.button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 150px;
+    border: none;
+    border-radius: 5px;
+}
+
+.button-container-top,
+.button-container-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button-container-bottom {
+    margin-top: 20px;
+}
+
+.button-container h1 {
+    font-size: 36px; /* Tamanho grande para o título "Sorveteria" */
+    margin-bottom: 20px;
+}
+
+/* Estilos específicos para os botões (ajuste as cores conforme desejado) */
+.btn-outline-danger {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d9534f;
+}
+
+.btn-outline-danger:hover {
+    color: #d9534f;
+    background-color: #fff;
+    border-color: #d9534f;
+}
