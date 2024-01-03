@@ -1,0 +1,34 @@
+<h2 class="mt-2" style="color: black; margin-left: 15px;">Relatório</h2>
+
+<hr style="color: black;">
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row" style="margin-left: 5px;">
+        <div class="form-group col-md-12 col-lg-2">
+            <label class="control-label required" for="nome" style="color: black;">Data </label>
+            <input type="date" class="form-control" autofocus name="data" formControlName="data" id="data">
+        </div>
+    </div>
+
+    <div class="form-group col-md-12 col-lg-2" style="margin: 17px;">
+        <button type="submit" class="btn btn-outline-primary" style="margin-right: 10px;"
+            ngbTooltip="Gerar">Gerar</button>
+    </div>
+</form>
+
+
+<hr style="color: black;">
+
+<div class="row justify-content-center">
+    <div class="form-group col-md-11">
+        <h2 class="mt-2 col-md-12 d-flex justify-content-center" style="color: black;" *ngIf="this.title">Gráfico de saída por Tipo Sorvete</h2>
+        <canvas #tipoSorvete height="50"></canvas>
+    </div>
+</div>
+
+<div class="col-md-12 d-flex justify-content-center">
+    <div class="form-group col-md-11">
+        <h2 class="mt-2 col-md-12 d-flex justify-content-center" style="color: black;" *ngIf="this.title">Gráfico por sabor</h2>
+        <canvas #saborSorvete height="50"></canvas>
+    </div>
+</div>

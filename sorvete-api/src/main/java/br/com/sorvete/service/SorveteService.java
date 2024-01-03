@@ -2,6 +2,7 @@ package br.com.sorvete.service;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -84,6 +85,11 @@ public class SorveteService{
 //
 //        return new ArrayList<>(mapaTransformado.values());
 //	}
+	
+	
+	public List<Sorvete> findAllByData(LocalDate data){
+		return sorveteRepository.findAllByData(data);
+	}
 	
 	private Integer findCodigoSorvete() {
 		return sorveteRepository.findLastCodigo();

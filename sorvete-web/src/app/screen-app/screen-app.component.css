@@ -22,15 +22,10 @@ body {
     border-radius: 5px;
 }
 
-.button-container-top,
-.button-container-bottom {
+.button-container-top {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.button-container-bottom {
-    margin-top: 20px;
 }
 
 .button-container h1 {
@@ -43,6 +38,9 @@ body {
     color: #fff;
     background-color: #d9534f;
     border-color: #d9534f;
+    margin-bottom: 10px;
+    max-width: 300px;
+    width: 100%;
 }
 
 .btn-outline-danger:hover {

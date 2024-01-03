@@ -87,5 +87,32 @@ public class SorveteRepository {
 
 		return sorveteList;
 	}
+	
+	public List<Sorvete> findAllByData(LocalDate data) {
+		List<Sorvete> sorveteList = new ArrayList<Sorvete>();
+
+		String sql = "SELECT * FROM sorvete where data = '" + data + "'";
+
+		try {
+			
+			Statement statement = ConnectionManager.getConnection().createStatement();
+			ResultSet result = statement.executeQuery(sql);
+
+			while (result.next()) {
+				Sorvete sorvete = new Sorvete();
+				sorvete.setId(result.getLong("id"));
+				sorvete.setCodigo(result.getInt("codigo"));
+				sorvete.setData(LocalDate.parse(result.getDate("data").toString()));
+				sorvete.setTipoSorveteId(tipoSorveteService.findById(result.getLong("tipo_sorvete_id")));
+				sorvete.setSaborId(saborService.findById(result.getLong("sabor_id")));
+				sorveteList.add(sorvete);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return sorveteList;
+	}
 
 }

@@ -11,6 +11,7 @@ import { CadastroSaborComponent } from './cadastro-sabor/cadastro-sabor.componen
 import { CadastroTipoSorveteComponent } from './cadastro-tipo-sorvete/cadastro-tipo-sorvete.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MontarSorveteComponent } from './montar-sorvete/montar-sorvete.component';
+import { EmitirRelatorioComponent } from './emitir-relatorio/emitir-relatorio.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MontarSorveteComponent } from './montar-sorvete/montar-sorvete.componen
     CadastroSaborComponent,
     ScreenAppComponent,
     CadastroTipoSorveteComponent,
-    MontarSorveteComponent
+    MontarSorveteComponent,
+    EmitirRelatorioComponent
   ],
   imports: [
     BrowserModule,

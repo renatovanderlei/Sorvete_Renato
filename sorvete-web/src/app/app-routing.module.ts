@@ -4,11 +4,16 @@ import { ScreenAppComponent } from './screen-app/screen-app.component';
 import { CadastroSaborComponent } from './cadastro-sabor/cadastro-sabor.component';
 import { CadastroTipoSorveteComponent } from './cadastro-tipo-sorvete/cadastro-tipo-sorvete.component';
 import { MontarSorveteComponent } from './montar-sorvete/montar-sorvete.component';
+import { EmitirRelatorioComponent } from './emitir-relatorio/emitir-relatorio.component';
 
 const routes: Routes = [
   {
     path: 'cadastro-sorvete',
     component: CadastroSaborComponent
+  },
+  {
+    path: 'emitir-relatorio',
+    component: EmitirRelatorioComponent
   },
   {
     path: 'cadastro-tipo-sorvete',
