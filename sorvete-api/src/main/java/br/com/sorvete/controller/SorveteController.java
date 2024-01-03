@@ -19,6 +19,9 @@ import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBui
 import br.com.sorvete.dto.SorveteRequestDto;
 import br.com.sorvete.dto.SorveteReturnDto;
 import br.com.sorvete.entity.Sorvete;
+import br.com.sorvete.montaSorvete.Lista;
+import br.com.sorvete.montaSorvete.ListaProxy;
+import br.com.sorvete.repository.SorveteRepository;
 import br.com.sorvete.service.SorveteService;
 
 @RestController
@@ -28,6 +31,9 @@ public class SorveteController {
 	
 	@Autowired
 	private SorveteService sorveteService;
+	
+	@Autowired
+	private SorveteRepository sorveteRepository;
 	
 	@PostMapping
 	public ResponseEntity<Sorvete> save(@RequestBody SorveteRequestDto sorveteDto) {
@@ -48,8 +54,11 @@ public class SorveteController {
 	
 	@GetMapping
 	public ResponseEntity<List<SorveteReturnDto>> all() {
+		
+		Lista lista = new ListaProxy();
+		
 		var retorno = ResponseEntity.status(HttpStatus.OK)
-				.body(sorveteService.findAll());
+				.body(lista.sorveteReturnDtoList(sorveteRepository));
 		
 		return retorno;
 	}

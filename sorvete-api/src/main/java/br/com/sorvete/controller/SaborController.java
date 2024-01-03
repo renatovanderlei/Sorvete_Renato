@@ -23,6 +23,7 @@ import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBui
 import br.com.sorvete.entity.Sabor;
 import br.com.sorvete.exception.InvalidOperationException;
 import br.com.sorvete.service.SaborService;
+import br.com.sorvete.type.ReturnPegaLista;
 
 @RestController
 @RequestMapping(value = "/sabor", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -47,12 +48,7 @@ public class SaborController {
 	
 	@GetMapping
 	public ResponseEntity<List<Sabor>> all() {
-		try {
-			return ResponseEntity.status(HttpStatus.OK)
-					.body(saborService.findAll());
-		} catch (SQLException e) {
-			throw new InvalidOperationException("Ocorreu um erro no servidor.");
-		}
+		return ResponseEntity.status(HttpStatus.OK).body(ReturnPegaLista.listaOrdenada(saborService).findAll());
 	}
 	
 	@PutMapping("/{id}")
