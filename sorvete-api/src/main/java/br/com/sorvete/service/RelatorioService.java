@@ -3,7 +3,6 @@ package br.com.sorvete.service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.sorvete.dto.RelatorioDto;
-import br.com.sorvete.dto.SorveteReturnDto;
 import br.com.sorvete.entity.Sorvete;
 
 @Service
@@ -62,17 +60,14 @@ public class RelatorioService {
 	    Map<String, RelatorioDto> mapaTiposSorvetes = new HashMap<>();
 
 	    for (RelatorioDto relatorioDto : relatorioDtoList) {
-	        // Verificar se o tipo de sorvete já foi processado
 	        if (!mapaTiposSorvetes.containsKey(relatorioDto.getNome())) {
 	            int quantidade = contarQuantidade(relatorioDtoList, relatorioDto.getNome());
 
-	            // Criar um novo RelatorioDto com os resultados e adicionar ao mapa
 	            RelatorioDto relaDto = new RelatorioDto(relatorioDto.getNome(), quantidade);
 	            mapaTiposSorvetes.put(relatorioDto.getNome(), relaDto);
 	        }
 	    }
 
-	    // Agora, você pode usar os valores do mapa para criar uma nova lista, se necessário
 	    return new ArrayList<>(mapaTiposSorvetes.values());
 
 	}
