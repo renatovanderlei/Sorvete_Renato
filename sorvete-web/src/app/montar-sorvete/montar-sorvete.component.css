@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, rgba(76, 175, 80, 0.5), rgba(33, 150, 243, 0.5));
+    background-image: url('/assets/img4.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  
+  .container {
+    text-align: center;
+    color: rgba(202, 223, 18, 0.70);
+    background-color: rgba(255, 255, 255, 0.7); /* 50% white transparency */
+  }

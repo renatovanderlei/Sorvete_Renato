@@ -1,0 +1,23 @@
+.toolbar {
+    padding: 10px; /* Adicione o espaçamento interno desejado */
+    display: flex;
+    justify-content: center; /* Centralizar horizontalmente */
+    background-color: rgba(251, 165, 205, 0); /* Cor branca com 50% de transparência */
+    backdrop-filter: blur(10px); /* Adiciona um leve desfoque ao fundo (opcional) */
+}
+
+.btn {
+    color: #d9534f; /* Alterar a cor do texto para vermelho */
+    font-weight: bold; /* Deixar o texto em negrito */
+    padding: 10px 15px; /* Adicione o espaçamento interno desejado */
+    border: 2px solid #d9534f; /* Adicionar uma borda vermelha de 2px */
+    border-radius: 20px; /* Valor do raio para criar bordas arredondadas */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Efeito de transição suave */
+    margin-left: 2px; /* Adicione uma pequena margem à esquerda para criar espaçamento entre os botões */
+}
+
+.btn:hover {
+    background-color: transparent; /* Remover o fundo dos botões ao passar o mouse */
+    border-color: #fff; /* Alterar a cor da borda ao passar o mouse */
+}

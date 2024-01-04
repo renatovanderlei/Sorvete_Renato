@@ -26,6 +26,7 @@ public class SorveteRepository {
 	@Autowired
 	private SaborService saborService;
 	
+	// Como vou pegar meu sorvete e jogar no banco de dados
 	public Sorvete save(Sorvete t) throws SQLException {
 
 		String sql = "insert into sorvete (codigo, data, tipo_sorvete_id, sabor_id)" + "values (?,?,?,?)";
@@ -43,6 +44,8 @@ public class SorveteRepository {
 
 	}
 	
+	// uso um método para obter o último valor de código do sorvete salvo e,
+	// na hora que for criar a próxima venda, ele consiga identificar qual é o próximo número
 	public Integer findLastCodigo() {
 
 		String sql = "select codigo from sorvete order by codigo desc limit 1";
@@ -62,6 +65,7 @@ public class SorveteRepository {
 		return lastCodigo;
 	}
 	
+	//Vou usar esse método pra retornar a lista de sorvetes e também vou usar no Proxy
 	public List<Sorvete> findAll() {
 		List<Sorvete> sorveteList = new ArrayList<Sorvete>();
 
@@ -87,7 +91,9 @@ public class SorveteRepository {
 
 		return sorveteList;
 	}
+
 	
+	//Vou criar minha lista de sorvetes criados pela data 
 	public List<Sorvete> findAllByData(LocalDate data) {
 		List<Sorvete> sorveteList = new ArrayList<Sorvete>();
 

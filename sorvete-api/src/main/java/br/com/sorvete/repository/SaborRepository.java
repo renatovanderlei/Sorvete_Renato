@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import br.com.sorvete.connection.ConnectionManager;
 import br.com.sorvete.entity.Sabor;
 
+//Crud de acordo com a implementação da Rifa
 @Repository
 public class SaborRepository {
 
@@ -32,6 +33,7 @@ public class SaborRepository {
 
 	}
 
+	//implementei um método pra achar pelo id porque uso o id para preparar o relatório
 	public Sabor findById(Long id) {
 
 		String sql = "SELECT * FROM sabor WHERE id = '" + id + "'";
@@ -55,6 +57,7 @@ public class SaborRepository {
 		return sabor;
 	}
 
+	
 	public List<Sabor> findAll() {
 		List<Sabor> saborList = new ArrayList<Sabor>();
 

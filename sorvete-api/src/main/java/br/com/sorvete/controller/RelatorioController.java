@@ -17,13 +17,16 @@ import br.com.sorvete.dto.RelatorioDto;
 import br.com.sorvete.service.RelatorioService;
 
 @RestController
+//mapeia as urls que o controlador manipula e os tipos de midia que ele utiliza
 @RequestMapping(value = "/relatorio", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 @CrossOrigin("*")
 public class RelatorioController {
 	
+	//Injeta uma instância de RelatorioService
 	@Autowired
 	private RelatorioService relatorioService;
 	
+	//mapeio as solicitações do sabor, recebendo um parâmetro opcional "data" e retorna a lista de objetos relacionados ao sabor
 	@GetMapping("/sabor")
 	public ResponseEntity<List<RelatorioDto>> allSabor(@RequestParam(required = false) String data) {
 		
@@ -31,6 +34,7 @@ public class RelatorioController {
 		return ResponseEntity.status(HttpStatus.OK).body(relatorioService.findAllSabor(dataNew));
 	}
 	
+	//Faz a mesma coisa do anteior, mas com o tipo de sorvete
 	@GetMapping("/tipo")
 	public ResponseEntity<List<RelatorioDto>> allTipo(@RequestParam(required = false) String data) {
 		

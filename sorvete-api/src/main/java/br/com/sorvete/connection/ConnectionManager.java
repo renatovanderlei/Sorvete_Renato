@@ -7,12 +7,11 @@ import java.util.Properties;
 
 public final class ConnectionManager {
 
-	private static final String USER = "postgres";
-	private static final String PASSWORD = "postgres";
+	private static final String USER = "root";
+	private static final String PASSWORD = "admin";
 	
 	public static Connection getConnection() throws SQLException {
-		//PORTA LINUX 5433
-		String url = "jdbc:postgresql://127.0.0.1:5432/sorvete";
+		String url = "jdbc:mysql://127.0.0.1:3306/sorvete";
 		
 		Properties properties = new Properties();
 		properties.setProperty("user", USER);
@@ -22,7 +21,7 @@ public final class ConnectionManager {
 	}
 
 	protected static Connection getNewConnection() throws SQLException {
-		String url = "jdbc:postgresql://127.0.0.1:5432/sorvete";
+		String url = "jdbc:mysql://127.0.0.1:3306/sorvete";
 		return DriverManager.getConnection(url, USER, PASSWORD);
 	}
 }

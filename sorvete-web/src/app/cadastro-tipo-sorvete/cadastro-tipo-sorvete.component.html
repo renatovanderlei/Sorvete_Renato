@@ -1,82 +1,95 @@
-<h2 class="mt-2" style="color: black; margin-left: 15px;">Cadastro de Tipo de Sorvete</h2>
+<body class="d-flex flex-column justify-content-start align-items-center">
+    <div class="container">
+        <h2 class="mt-2" style="color: black; margin-left: 15px;">Cadastro de Tipo de Sorvete</h2>
 
-<hr style="color: black;">
+        <hr style="color: black;">
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div class="row" style="margin-left: 5px;">
-        <div class="form-group col-md-12 col-lg-2">
-            <label style="color: black;">Código :</label>
-            <input type="text" class="form-control form-control-sm" name="codigo" formControlName="codigo" id="codigo">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="row" style="margin-left: 5px;">
+                <div class="form-group col-md-12 col-lg-2">
+                    <label style="color: black;">Código :</label>
+                    <input type="text" class="form-control form-control-sm" name="codigo" formControlName="codigo"
+                        id="codigo">
+                </div>
+
+                <div class="form-group col-md-12 col-lg-4">
+                    <label style="color: black;">Tipo :</label>
+                    <input type="text" class="form-control form-control-sm" name="tipo" formControlName="tipo"
+                        id="tipo">
+                </div>
+
+                <div class="form-group col-md-12 col-lg-4">
+                    <label style="color: black;">Quantidade de Bolas :</label>
+                    <input type="number" class="form-control form-control-sm" name="qtdBola" formControlName="qtdBola"
+                        id="qtdBola">
+                </div>
+
+                <div class="form-group col-md-12 col-lg-4">
+                    <label style="color: black;">Peso :</label>
+                    <input type="text" class="form-control form-control-sm" name="peso" formControlName="peso"
+                        id="peso">
+                </div>
+
+                <div class="form-group col-md-12 col-lg-4">
+                    <label style="color: black;">Descrição :</label>
+                    <input type="text" class="form-control form-control-sm" name="descricao" formControlName="descricao"
+                        id="descricao">
+                </div>
+
+                <div class="form-group col-md-12 col-lg-4">
+                    <label style="color: black;">Valor :</label>
+                    <input type="number" class="form-control form-control-sm" name="valor" formControlName="valor"
+                        id="valor" step="0.01">
+                </div>
+
+            </div>
+
+            <div class="col-md-12 d-flex justify-content-end" style="margin-top: 10px;">
+                <button type="submit" class="btn btn-outline-primary" style="margin-right: 10px;"
+                    ngbTooltip="Salvar">Salvar</button>
+                <button type="button" class="btn btn-outline-danger" (click)="onCancel()"
+                    ngbTooltip="Limpar dados">Cancelar</button>
+            </div>
+        </form>
+
+        <hr style="color: black;">
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-sm">
+                <thead>
+                    <tr>
+                        <th width="16%" scope="col" sortable="nome">Código</th>
+                        <th width="16%" scope="col" sortable="tipo">Tipo</th>
+                        <th width="16%" scope="col" sortable="qtdBola">Quantidade de Bolas</th>
+                        <th width="16%" scope="col" sortable="peso">Peso</th>
+                        <th width="16%" scope="col" sortable="descricao">Descrição</th>
+                        <th width="16%" scope="col" sortable="valor">Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let tipoSabor of tipoSaborList">
+                        <td>{{ tipoSabor.codigo }}</td>
+                        <td>{{ tipoSabor.tipo }}</td>
+                        <td>{{ tipoSabor.qtdBola }}</td>
+                        <td>{{ tipoSabor.peso }}</td>
+                        <td>{{ tipoSabor.descricao }}</td>
+                        <td>{{ tipoSabor.valor }}</td>
+                        <td>
+                            <div class="d-flex justify-content-center">
+                                <button type="button" class="btn btn-outline-warning btn-sm btn-size-fixed mr-2"
+                                    placement="top" ngbTooltip="Editar" style="margin-right: 5px;"
+                                    (click)="onUpdate(tipoSabor)">
+                                    <i class="far fa-edit"></i>
+                                </button>
+                                <button type="button" class="btn btn-outline-danger btn-sm btn-size-fixed"
+                                    placement="top" ngbTooltip="Excluir" (click)="onDelete(tipoSabor)">
+                                    <i class="far fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-
-        <div class="form-group col-md-12 col-lg-4">
-            <label style="color: black;">Tipo :</label>
-            <input type="text" class="form-control form-control-sm" name="tipo" formControlName="tipo" id="tipo">
-        </div>
-
-        <div class="form-group col-md-12 col-lg-4">
-            <label style="color: black;">Quantidade de Bolas :</label>
-            <input type="number" class="form-control form-control-sm" name="qtdBola" formControlName="qtdBola" id="qtdBola">
-        </div>
-
-        <div class="form-group col-md-12 col-lg-4">
-            <label style="color: black;">Peso :</label>
-            <input type="text" class="form-control form-control-sm" name="peso" formControlName="peso" id="peso">
-        </div>
-
-        <div class="form-group col-md-12 col-lg-4">
-            <label style="color: black;">Descrição :</label>
-            <input type="text" class="form-control form-control-sm" name="descricao" formControlName="descricao" id="descricao">
-        </div>
-
-        <div class="form-group col-md-12 col-lg-4">
-            <label style="color: black;">Valor :</label>
-            <input type="number" class="form-control form-control-sm" name="valor" formControlName="valor" id="valor" step="0.01">
-        </div>
-       
     </div>
-
-    <div class="col-md-12 d-flex justify-content-end" style="margin-top: 10px;">
-        <button type="submit" class="btn btn-outline-primary" style="margin-right: 10px;"
-            ngbTooltip="Salvar">Salvar</button>
-        <button type="button" class="btn btn-outline-danger" (click)="onCancel()"
-            ngbTooltip="Limpar dados">Cancelar</button>
-    </div>
-</form>
-
-<hr style="color: black;">
-
-<div class="table-responsive">
-    <table class="table table-striped table-hover table-sm">
-        <thead>
-            <tr>
-                <th width="16%" scope="col" sortable="nome">Código</th>
-                <th width="16%" scope="col" sortable="tipo">Tipo</th>
-                <th width="16%" scope="col" sortable="qtdBola">Quantidade de Bolas</th>
-                <th width="16%" scope="col" sortable="peso">Peso</th>
-                <th width="16%" scope="col" sortable="descricao">Descrição</th>
-                <th width="16%" scope="col" sortable="valor">Valor</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let tipoSabor of tipoSaborList">
-                <td>{{ tipoSabor.codigo }}</td>
-                <td>{{ tipoSabor.tipo }}</td>
-                <td>{{ tipoSabor.qtdBola }}</td>
-                <td>{{ tipoSabor.peso }}</td>
-                <td>{{ tipoSabor.descricao }}</td>
-                <td>{{ tipoSabor.valor }}</td>
-                <td>
-                    <div class="d-flex justify-content-center">
-                        <button type="button" class="btn btn-outline-warning btn-sm btn-size-fixed mr-2" placement="top" ngbTooltip="Editar" style="margin-right: 5px;" (click)="onUpdate(tipoSabor)">
-                            <i class="far fa-edit"></i>
-                        </button>
-                        <button type="button" class="btn btn-outline-danger btn-sm btn-size-fixed" placement="top" ngbTooltip="Excluir" (click)="onDelete(tipoSabor)">
-                            <i class="far fa-trash-alt"></i>
-                        </button>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+</body>

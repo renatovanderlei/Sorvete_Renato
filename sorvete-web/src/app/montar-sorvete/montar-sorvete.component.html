@@ -1,74 +1,81 @@
-<h2 class="mt-2" style="color: black; margin-left: 15px;">Montar Sorvete</h2>
+<body class="d-flex flex-column justify-content-start align-items-center">
+    <div class="container">
+        <h2 class="mt-2" style="color: black; margin-left: 15px;">Montar Sorvete</h2>
 
-<hr style="color: black;">
+        <hr style="color: black;">
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div class="row" style="margin-left: 5px;">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="row" style="margin-left: 5px;">
 
-        <div class="form-group col-md-12 col-lg-12" style="margin-bottom: 5px;" formGroupName="tipoSorvete">
-            <label style="color: black;">Tipo do Sorvete :</label>
-            <select class="form-select" name="tipoSorvete.id" formControlName="id" (change)="onTipoSorveteChange()">
-                <option value="">Selecione</option>
-                <option *ngFor="let tipoSorvete of tipoSorveteList" value={{tipoSorvete.id}}>{{tipoSorvete.tipo}}
-                </option>
-            </select>
-            <span *ngIf="qtdMaxBola !== 0" style="color: red;">Máximo {{qtdMaxBola}} de Bolas nesse Tipo de
-                Sorvete.</span>
-        </div>
-
-        <div class="form-group col-md-12 col-lg-2" style="margin-bottom: 5px;">
-            <label style="color: black;">Preço :</label>
-            <input type="text" class="form-control form-control-sm" value={{valor}} disabled>
-        </div>
-
-        <div class="form-group col-md-12 col-lg-2" style="margin-bottom: 5px;">
-            <label style="color: black;">Peso :</label>
-            <input type="text" class="form-control form-control-sm" value={{peso}} disabled>
-        </div>
-
-        <div class="form-group col-md-12 col-lg-8" style="margin-bottom: 5px;">
-            <label style="color: black;">Descrição :</label>
-            <input type="text" class="form-control form-control-sm" value={{descricao}} disabled>
-        </div>
-
-        <div class="form-group col-md-12 col-lg-2" style="margin-bottom: 5px;">
-            <div formArrayName="sabores">
-                <div *ngFor="let _ of qtdArray; let i = index" style="display: inline-block; margin-right: 10px;">
-                    <label style="color: black;">Sabor {{i + 1}} :</label>
-                    <select class="form-select" name="sabor.id" (change)="onChanges(i, $event)">
+                <div class="form-group col-md-12 col-lg-12" style="margin-bottom: 5px;" formGroupName="tipoSorvete">
+                    <label style="color: black;">Tipo do Sorvete :</label>
+                    <select class="form-select" name="tipoSorvete.id" formControlName="id"
+                        (change)="onTipoSorveteChange()">
                         <option value="">Selecione</option>
-                        <option *ngFor="let sabor of saborList" [value]="sabor.id">{{sabor.nome}}</option>
+                        <option *ngFor="let tipoSorvete of tipoSorveteList" value={{tipoSorvete.id}}>
+                            {{tipoSorvete.tipo}}
+                        </option>
                     </select>
+                    <span *ngIf="qtdMaxBola !== 0" style="color: red;">Máximo {{qtdMaxBola}} de Bolas nesse Tipo de
+                        Sorvete.</span>
                 </div>
+
+                <div class="form-group col-md-12 col-lg-2" style="margin-bottom: 5px;">
+                    <label style="color: black;">Preço :</label>
+                    <input type="text" class="form-control form-control-sm" value={{valor}} disabled>
+                </div>
+
+                <div class="form-group col-md-12 col-lg-2" style="margin-bottom: 5px;">
+                    <label style="color: black;">Peso :</label>
+                    <input type="text" class="form-control form-control-sm" value={{peso}} disabled>
+                </div>
+
+                <div class="form-group col-md-12 col-lg-8" style="margin-bottom: 5px;">
+                    <label style="color: black;">Descrição :</label>
+                    <input type="text" class="form-control form-control-sm" value={{descricao}} disabled>
+                </div>
+
+                <div class="form-group col-md-12 col-lg-2" style="margin-bottom: 5px;">
+                    <div formArrayName="sabores">
+                        <div *ngFor="let _ of qtdArray; let i = index"
+                            style="display: inline-block; margin-right: 10px;">
+                            <label style="color: black;">Sabor {{i + 1}} :</label>
+                            <select class="form-select" name="sabor.id" (change)="onChanges(i, $event)">
+                                <option value="">Selecione</option>
+                                <option *ngFor="let sabor of saborList" [value]="sabor.id">{{sabor.nome}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+            <div class="col-md-12 d-flex justify-content-end" style="margin-top: 10px;">
+                <button type="submit" class="btn btn-outline-primary" style="margin-right: 10px;"
+                    ngbTooltip="Salvar">Salvar</button>
+                <button type="button" class="btn btn-outline-danger" (click)="onCancel()"
+                    ngbTooltip="Limpar dados">Cancelar</button>
+            </div>
+        </form>
+
+        <hr style="color: black;">
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-sm">
+                <thead>
+                    <tr>
+                        <th width="20%" scope="col" sortable="codigo">Tipo do Sorvete</th>
+                        <th width="60%" scope="col" sortable="nome">Sabores</th>
+                        <th width="20%" scope="col" sortable="descricao">Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let sabor of sorveteList">
+                        <td>{{ sabor.tipoSorvete }}</td>
+                        <td>{{ sabor.saboreSorvete }}</td>
+                        <td>{{ sabor.data }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-
     </div>
-    <div class="col-md-12 d-flex justify-content-end" style="margin-top: 10px;">
-        <button type="submit" class="btn btn-outline-primary" style="margin-right: 10px;"
-            ngbTooltip="Salvar">Salvar</button>
-        <button type="button" class="btn btn-outline-danger" (click)="onCancel()"
-            ngbTooltip="Limpar dados">Cancelar</button>
-    </div>
-</form>
-
-<hr style="color: black;">
-
-<div class="table-responsive">
-    <table class="table table-striped table-hover table-sm">
-        <thead>
-            <tr>
-                <th width="20%" scope="col" sortable="codigo">Tipo do Sorvete</th>
-                <th width="60%" scope="col" sortable="nome">Sabores</th>
-                <th width="20%" scope="col" sortable="descricao">Data</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let sabor of sorveteList">
-                <td>{{ sabor.tipoSorvete }}</td>
-                <td>{{ sabor.saboreSorvete }}</td>
-                <td>{{ sabor.data }}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+</body>

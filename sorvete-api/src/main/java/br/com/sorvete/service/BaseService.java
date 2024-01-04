@@ -3,6 +3,7 @@ package br.com.sorvete.service;
 import java.sql.SQLException;
 import java.util.List;
 
+// Interface pra implementar os cruds
 public interface BaseService<E, ID> {
 	
 	public E save(E e) throws SQLException; 

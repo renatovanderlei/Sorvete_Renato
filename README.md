@@ -1,12 +1,19 @@
 # Sorvete
-Projeto com intuito de validação de sabores e tipo de sorvete, feito em Angular e Java utilizando spring boot como framework
+Projeto com intuito de criação e validação de sabores e tipo de sorvete, feito em Angular e Java utilizando spring boot como framework, usando MySQL Workbench no banco de dados.
 
-## Horas trabalhadas
-    -> Inicio : 21:30 - 30/12/2023
-    -> Fim: 01:30 - 31/12/2023
+##Iniciar o Front:
+	- Feito no VsCode: Terminal -> npm install --force
+				    -> npm start
+
+##Iniciar o Back:
+	*Após iniciar o banco de dados;
+	- Feito no Eclipse: - Realizar configurações necessárias no ConnectionManager.java
+	- Iniciar a aplicação a partir do SorveteApplication.java
 
 ## Registro de Sabor:
-    -> Permite cadastrar/editar/atualizar/deletar novos sabores de sorvete.  
+    -> Permite cadastrar/editar/atualizar/deletar novos sabores de sorvete.
+
+
 ## Registro de TipoSorvete:
     -> Permite cadastrar/editar/atualizar/deletar os tipos de sorvetes, definindo a quantidade máxima de sabores permitidos para cada tipo.
 ## Registro de Sorvete:
@@ -15,7 +22,8 @@ Projeto com intuito de validação de sabores e tipo de sorvete, feito em Angula
     -> Limita a quantidade de sabores registrados pelo TipoSorvete escolhido.
 ## Relatório por dia:
     -> Emite um relatório com a quantidade de sorvetes vendidos no dia.
-    -> Inclui informações sobre quantos sorvetes foram vendidos por sabor no dia. 
+    -> Inclui informações sobre quantos sorvetes foram vendidos por sabor no dia.
+
     
 ## Observações Importantes
     -> Os relacionamentos devem ser feitos entre as classes, mantendo a orientação a objetos.

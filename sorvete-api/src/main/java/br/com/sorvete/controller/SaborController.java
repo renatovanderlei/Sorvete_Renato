@@ -33,6 +33,7 @@ public class SaborController {
 	@Autowired
 	private SaborService saborService;
 	
+	//solicitações POST para criar novos sabores
 	@PostMapping
 	public ResponseEntity<Sabor> save(@RequestBody Sabor sabor) {
 
@@ -46,11 +47,13 @@ public class SaborController {
 		return ResponseEntity.created(uri).body(sabor);
 	}
 	
+	//lida com solicitações GET para obter todos os sabores
 	@GetMapping
 	public ResponseEntity<List<Sabor>> all() {
 		return ResponseEntity.status(HttpStatus.OK).body(ReturnPegaLista.listaOrdenada(saborService).findAll());
 	}
 	
+	//lida com solicitações PUT para atualizar um sabor específico
 	@PutMapping("/{id}")
 	public ResponseEntity<Sabor> update(@PathVariable(name = "id", required = true) Long id, @RequestBody(required = true) Sabor sabor) {
 		
@@ -64,6 +67,7 @@ public class SaborController {
 
 	}
 	
+	// lida com solicitações DELETE para excluir um sabor específico
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping(value = "/{id}")
 	public void delete(@PathVariable(name = "id", required = true) Long id) {

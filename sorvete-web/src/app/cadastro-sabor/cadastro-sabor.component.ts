@@ -7,16 +7,20 @@ import { SaborService } from '../service/SaborService';
   templateUrl: './cadastro-sabor.component.html',
   styleUrls: ['./cadastro-sabor.component.css']
 })
+//Chamando os métodos para serem utilizados no html
 export class CadastroSaborComponent implements OnInit {
 
+  //Defino o formulário e a lista de sabores
   form!: FormGroup;
   saborList: any[] = [];
 
+  //Defino o construtor
   constructor(
     private formBuilder: FormBuilder,
     private saborService: SaborService 
   ){}
 
+  //Defino o método para iniciar o formulário
   ngOnInit() {
 
     this.form = this.formBuilder.group({
@@ -36,6 +40,7 @@ export class CadastroSaborComponent implements OnInit {
 
   }
 
+  //Defino os métodos para deletar, atualizar, carregar, salvar e cancelar
   onDelete(sabor: any){
     this.saborService.delete(sabor.id).subscribe(
       response => {
@@ -54,6 +59,7 @@ export class CadastroSaborComponent implements OnInit {
     });
   }
 
+  //Defino o método para salvar o sabor
   onSubmit(){
     if(this.form.valid){
      if(this.form.value.id){
@@ -76,6 +82,7 @@ export class CadastroSaborComponent implements OnInit {
     }
   }
 
+  //Defino o método para cancelar o sabor
   onCancel(){
     this.form.reset();
   }

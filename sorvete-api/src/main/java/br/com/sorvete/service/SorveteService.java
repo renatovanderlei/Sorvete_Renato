@@ -25,6 +25,7 @@ public class SorveteService{
 	@Autowired
 	private SorveteRepository sorveteRepository;
 	
+	// Primeiro, faço a validação do sorvete
 	public void validateSorvete(SorveteRequestDto sorveteDto) {
 		var tipoSorvete = new TipoSorvete();
 		
@@ -40,11 +41,13 @@ public class SorveteService{
 		
 	}
 	
+	//E vou criar meu sorvete
 	public Sorvete save(SorveteRequestDto sorveteDto) throws SQLException {
 		
 		Sorvete sorvete = new Sorvete();
-		Integer lastCodigoSorvete = findCodigoSorvete();
+		Integer lastCodigoSorvete = findCodigoSorvete(); //pego o código do sorvete atual
 		
+	//uso o DTO para requisitar os ids dos sabores, incrementar o último código do sorvete, pegar a data, e o id do tipo de sorvete
 		for (Integer sabor : sorveteDto.getSabores()) {
 			sorvete.setCodigo(lastCodigoSorvete + 1);
 			sorvete.setData(LocalDate.now());
@@ -60,33 +63,6 @@ public class SorveteService{
 		return sorvete;
 	}
 	
-//	public List<SorveteReturnDto> findAll(){
-//		
-//		var sorveteList = sorveteRepository.findAll();
-//		
-//		Map<Integer, SorveteReturnDto> mapaTransformado = new HashMap<>();
-//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-//
-//        for (Sorvete sorvete : sorveteList) {
-//            Integer codigo = sorvete.getCodigo();
-//
-//            if (mapaTransformado.containsKey(codigo)) {
-//            	SorveteReturnDto sorveteReturnDto = mapaTransformado.get(codigo);
-//            	sorveteReturnDto.getSaboreSorvete().add(sorvete.getSaborId().getNome());
-//            } else {
-//            	SorveteReturnDto sorveteReturnDtoNew = new SorveteReturnDto();
-//            	sorveteReturnDtoNew.setTipoSorvete(sorvete.getTipoSorveteId().getDescricao());
-//            	sorveteReturnDtoNew.getSaboreSorvete().add(sorvete.getSaborId().getNome());
-//            	sorveteReturnDtoNew.setData(sorvete.getData().format(formatter));
-//
-//                mapaTransformado.put(codigo, sorveteReturnDtoNew);
-//            }
-//        }
-//
-//        return new ArrayList<>(mapaTransformado.values());
-//	}
-	
-	
 	public List<Sorvete> findAllByData(LocalDate data){
 		return sorveteRepository.findAllByData(data);
 	}
@@ -94,5 +70,4 @@ public class SorveteService{
 	private Integer findCodigoSorvete() {
 		return sorveteRepository.findLastCodigo();
 	}
-
 }

@@ -35,9 +35,9 @@ public class SorveteController {
 	@Autowired
 	private SorveteRepository sorveteRepository;
 	
+	//Vou pegar os parâmetros pra o Post do meu sorvete e criar uma nova instância
 	@PostMapping
 	public ResponseEntity<Sorvete> save(@RequestBody SorveteRequestDto sorveteDto) {
-
 		sorveteService.validateSorvete(sorveteDto);
 		Sorvete sorvete = new Sorvete();
 		try {
@@ -46,12 +46,13 @@ public class SorveteController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		//Aqui, eu troco os ids pelo código no caminho de identificação, porque o código que é único para cada sorvete.
 		final URI uri = MvcUriComponentsBuilder.fromController(getClass()).path("/{id}").buildAndExpand(sorvete.getCodigo()).toUri();
 		return ResponseEntity.created(uri).body(sorvete);
 		
 	}
 	
+	//Pegar a lista de sorvetes
 	@GetMapping
 	public ResponseEntity<List<SorveteReturnDto>> all() {
 		

@@ -12,6 +12,7 @@ import br.com.sorvete.repository.SaborRepository;
 @Service
 public class SaborService implements BaseService<Sabor, Long> {
 	
+	//SaborRepository é injetado porque o SaborService "presta o serviço" de realizar as operações dos dados pro repository
 	@Autowired
 	private SaborRepository saborRepository;
 

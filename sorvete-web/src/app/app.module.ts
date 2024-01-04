@@ -12,6 +12,7 @@ import { CadastroTipoSorveteComponent } from './cadastro-tipo-sorvete/cadastro-t
 import { HttpClientModule } from '@angular/common/http';
 import { MontarSorveteComponent } from './montar-sorvete/montar-sorvete.component';
 import { EmitirRelatorioComponent } from './emitir-relatorio/emitir-relatorio.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { EmitirRelatorioComponent } from './emitir-relatorio/emitir-relatorio.co
     ScreenAppComponent,
     CadastroTipoSorveteComponent,
     MontarSorveteComponent,
-    EmitirRelatorioComponent
+    EmitirRelatorioComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,

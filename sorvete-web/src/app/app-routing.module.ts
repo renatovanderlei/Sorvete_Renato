@@ -5,31 +5,33 @@ import { CadastroSaborComponent } from './cadastro-sabor/cadastro-sabor.componen
 import { CadastroTipoSorveteComponent } from './cadastro-tipo-sorvete/cadastro-tipo-sorvete.component';
 import { MontarSorveteComponent } from './montar-sorvete/montar-sorvete.component';
 import { EmitirRelatorioComponent } from './emitir-relatorio/emitir-relatorio.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 const routes: Routes = [
-  {
-    path: 'cadastro-sorvete',
-    component: CadastroSaborComponent
+{path: 'app', 
+component: ToolbarComponent,
+children: [  {
+  path: 'cadastro-sorvete',
+  component: CadastroSaborComponent
+},
+{
+  path: 'emitir-relatorio',
+  component: EmitirRelatorioComponent
+},
+{
+  path: 'cadastro-tipo-sorvete',
+  component: CadastroTipoSorveteComponent
+},
+{
+  path: 'montar-sorvete',
+  component: MontarSorveteComponent
+},]} ,
+ {
+    path: "", redirectTo: "/screen", pathMatch: "full"
   },
   {
-    path: 'emitir-relatorio',
-    component: EmitirRelatorioComponent
-  },
-  {
-    path: 'cadastro-tipo-sorvete',
-    component: CadastroTipoSorveteComponent
-  },
-  {
-    path: 'montar-sorvete',
-    component: MontarSorveteComponent
-  },
-  {
-    path: 'app',
-    component: ScreenAppComponent
-  },
-  {
-    path: "", redirectTo: "/app", pathMatch: "full"
-  },
+    path: "screen", component: ScreenAppComponent
+  }
 ];
 
 @NgModule({

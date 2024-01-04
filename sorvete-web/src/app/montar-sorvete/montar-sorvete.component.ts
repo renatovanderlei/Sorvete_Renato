@@ -9,6 +9,8 @@ import { SorveteService } from '../service/SorveteService';
   templateUrl: './montar-sorvete.component.html',
   styleUrls: ['./montar-sorvete.component.css']
 })
+
+//Vou montar o formulário com as informações que quero que sejam setadas
 export class MontarSorveteComponent {
   form!: FormGroup;
   qtdMaxBola: number = 0;
@@ -21,6 +23,7 @@ export class MontarSorveteComponent {
   selectedSabores: { [key: number]: number } = {};
   sorveteList: any[] = [];
 
+  //Vou injetar o FormBuilder para poder criar o formulário, pegando as info de sabor e tipo de sorvete
   constructor(
     private formBuilder: FormBuilder,
     private tipoSorveteService: TipoSorveteService,
@@ -29,7 +32,7 @@ export class MontarSorveteComponent {
   ){}
 
   ngOnInit() {
-
+//Vou criar o formulário com os campos que quero que sejam setados
     this.form = this.formBuilder.group({
       tipoSorvete: this.formBuilder.group({
         id: ['', [Validators.required]]
@@ -41,6 +44,7 @@ export class MontarSorveteComponent {
 
   }
 
+  //Vou utilizar os serviços para carregar tipos de sorvetes, sabores e sorvetes.
   load(){
     this.tipoSorveteService.findAll().subscribe((response: any) => {
       response = this.tipoSorveteList = response;
@@ -55,7 +59,9 @@ export class MontarSorveteComponent {
     });
   }
 
+  //Vou criar um método para adicionar um novo sabor
   onSubmit(){
+    //Faço a verificação da quantidade de bolas e numero de sabores
     const lentgh = this.form.get('sabores') as FormArray;
     if(lentgh.length != this.qtdMaxBola){
       return;
@@ -72,10 +78,12 @@ export class MontarSorveteComponent {
     }
   }
 
+  //Vou criar um método para cancelar a operação
   onCancel(){
     this.form.reset();
   }
 
+  //Método chamado quando ocorrem alterações nas escolhas de sabores durante a montagem do sorvete
   onChanges(index: number, event: any): void {
     const selectedSaborId = event?.target?.value;
     
@@ -85,6 +93,7 @@ export class MontarSorveteComponent {
     }
   }
   
+  //Método chamado quando ocorrem alterações na quantidade de bolas durante a montagem do sorvete
   atualizarFormArray(): void {
     const saboresArray = this.form.get('sabores') as FormArray;
   
@@ -98,7 +107,8 @@ export class MontarSorveteComponent {
     });
   }
   
-
+//Método chamado quando ocorrem alterações no tipo de sorvete durante a montagem do sorvete,
+//atualizando as descrições
   onTipoSorveteChange() {
     const selectedTipoSorveteId = this.form.get('tipoSorvete.id')!.value;
     const selectedTipoSorvete = this.tipoSorveteList.find(tipo => tipo.id == selectedTipoSorveteId);

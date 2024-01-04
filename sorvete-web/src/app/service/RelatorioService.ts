@@ -5,11 +5,12 @@ import { Observable, tap } from 'rxjs';
 @Injectable({
     providedIn: 'root'
   })
-  export class RealtorioService {
+  export class RealtorioService { //Classe sendo exportada para ser usada em outros componentes
     url = 'http://localhost:8080/';
-    headers: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+    headers: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json'); //construtor das requisições http
     constructor(private http: HttpClient) { }
 
+    //Faço a requisição http para o back-end, passando a data como parâmetro
     findAllSabor(data : any){
       return this.http.get<any>(this.url + "relatorio/sabor", {
         headers: this.headers,
